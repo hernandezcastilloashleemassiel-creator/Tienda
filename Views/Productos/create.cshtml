@@ -1,0 +1,37 @@
+﻿@model InventarioExpres.Models.Producto
+@{
+    ViewData["Title"] = "Nuevo producto";
+}
+
+<h1>Nuevo producto</h1>
+<form asp-action="create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Stock" class="form-label"></label>
+        <input asp-for="Stock" class="form-control" />
+        <span asp-validation-for="Stock" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Precio" class="form-label"></label>
+        <input asp-for="Precio" class="form-control" />
+        <span asp-validation-for="Precio" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ProveedorId" class="form-label"></label>
+        <select asp-for="ProveedorId" class="form-select" asp-items="ViewBag.Proveedores">
+            <option value="">-- Seleccione --</option>
+        </select>
+        <span asp-validation-for="ProveedorId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

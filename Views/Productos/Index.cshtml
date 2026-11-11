@@ -1,0 +1,31 @@
+﻿@model IEnumerable<InventarioExpres.Models.Producto>
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<h1>Productos</h1>
+<a asp-action="Create" class="btn btn-primary mb-3">Nuevo producto</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr><th>Nombre</th><th>Stock</th><th>Precio</th><th>Proveedor</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Stock</td>
+                <td>@item.Precio.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</td>
+                <td>@item.Proveedor?.Nombre</td>
+                <td class="text-end">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline"
+                          onsubmit="return confirm('¿Eliminar este producto?');">
+                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
