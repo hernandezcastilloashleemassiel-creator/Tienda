@@ -13,7 +13,7 @@ public class ProductosController : Controller
 
     private void CargarProveedores(int? seleccionado = null)
         => ViewBag.Proveedores = new SelectList(
-            _context.Proveedores.OrderBy(p => p.Nombre), "Id", "Nombre", seleccionado);
+            _context.Proveedores.OrderBy(p => p.Nombre), "Id", "Empresa", seleccionado);
 
     public async Task<IActionResult> Index()
         => View(await _context.Productos.Include(p => p.Proveedor).OrderBy(p => p.Nombre).ToListAsync());
