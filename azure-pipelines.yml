@@ -52,7 +52,7 @@ stages:
 
     - task: AzureWebApp@1
       inputs:
-        azureSubscription: 'Tiendaaa' 
+        azureSubscription: 'Tiendapractica' 
         appType: 'webApp'
         appName: 'Tienda20261110225604'    
         package: '$(System.ArtifactsDirectory)/drop/*.zip'
